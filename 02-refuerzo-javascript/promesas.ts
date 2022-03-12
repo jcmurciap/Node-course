@@ -48,11 +48,20 @@ const getSalarioo = (id:number) => {
     })
 }
 
-const id = 1;
-getEmpleadoo(id)
-    .then(empleado => console.log(empleado)) // si la promesa es procesada
-    .catch(err => console.log(err));         // manejo de errores
+const id = 3;
+// getEmpleadoo(id)
+//     .then(empleado => console.log(empleado)) // si la promesa es procesada
+//     .catch(err => console.log(err));         // manejo de errores
 
-getSalarioo(id)
-    .then(salario => console.log(salario))
+// getSalarioo(id)
+//     .then(salario => console.log(salario))
+//     .catch(err => console.log(err));
+
+let nombree:any;
+getEmpleadoo(id)
+    .then(empleado => {
+        nombree = empleado;
+        return getSalarioo(id) //siemore debe llevar return para que tome el resultado
+    })
+    .then(salario => console.log('El empleado',nombree, 'tiene un salario de',salario))
     .catch(err => console.log(err));
